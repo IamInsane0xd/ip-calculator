@@ -17,7 +17,7 @@ void parse_ip_string(ip_t *ip, char *ip_string)
 
 char *ip_to_string(ip_t ip)
 {
-	char *ip_string = malloc(sizeof(char) * 16);
-	sprintf_s(ip_string, sizeof(char) * 16, "%i.%i.%i.%i", ip.octet_1, ip.octet_2, ip.octet_3, ip.octet_4);
+	char *ip_string = malloc(sizeof(char) * IP_STRING_LENGTH);
+	sprintf_s(ip_string, sizeof(char) * IP_STRING_LENGTH, "%i.%i.%i.%i", ip.octet_1, ip.octet_2, ip.octet_3, ip.octet_4);
 	return ip_string;
 }

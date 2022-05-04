@@ -21,14 +21,14 @@ void parse_mask_string(mask_t *mask, char *mask_string)
 
 char *int_mask_to_string(mask_t mask)
 {
-	char *str = malloc(sizeof(char) * 16);
-	sprintf_s(str, sizeof(char) * 16, "%u.%u.%u.%u", mask.int_octet_1, mask.int_octet_2, mask.int_octet_3, mask.int_octet_4);
+	char *str = malloc(sizeof(char) * INT_MASK_STRING_LENGTH);
+	sprintf_s(str, sizeof(char) * INT_MASK_STRING_LENGTH, "%u.%u.%u.%u", mask.int_octet_1, mask.int_octet_2, mask.int_octet_3, mask.int_octet_4);
 	return str;
 }
 
 char *bin_mask_to_string(mask_t mask)
 {
-	char *str = malloc(sizeof(char) * 36);
-	sprintf_s(str, sizeof(char) * 36, "%s.%s.%s.%s", mask.bin_octet_1, mask.bin_octet_2, mask.bin_octet_3, mask.bin_octet_4);
+	char *str = malloc(sizeof(char) * BIN_MASK_STRING_LENGTH);
+	sprintf_s(str, sizeof(char) * BIN_MASK_STRING_LENGTH, "%s.%s.%s.%s", mask.bin_octet_1, mask.bin_octet_2, mask.bin_octet_3, mask.bin_octet_4);
 	return str;
 }

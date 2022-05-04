@@ -4,9 +4,9 @@ int main()
 {
 	unsigned int network_count;
 	network_t base_network;
-	char *base_name = malloc(128);
-	char *base_ip_string = malloc(16);
-	char *base_mask_string = malloc(16);
+	char *base_name = malloc(MAX_NETWORK_NAME_LENGTH),
+			 *base_ip_string = malloc(IP_STRING_LENGTH),
+			 *base_mask_string = malloc(INT_MASK_STRING_LENGTH);
 	ip_t base_ip;
 	mask_t base_mask;
 	narray_t networks;
@@ -16,9 +16,9 @@ int main()
 	printf("Ammount of networks: ");
 	scanf_s("%u", &network_count);
 
-	read_line("Base network name: ", true, true, base_name, 128);
-	read_line("Base network IP: ", true, false, base_ip_string, 16);
-	read_line("Base network mask: ", true, false, base_mask_string, 16);
+	read_line("Base network name: ", true, true, base_name, MAX_NETWORK_NAME_LENGTH);
+	read_line("Base network IP: ", true, false, base_ip_string, IP_STRING_LENGTH);
+	read_line("Base network mask: ", true, false, base_mask_string, INT_MASK_STRING_LENGTH);
 
 	parse_ip_string(&base_ip, base_ip_string);
 	parse_mask_string(&base_mask, base_mask_string);
@@ -31,7 +31,7 @@ int main()
 		unsigned int host_count;
 		network_t network;
 		
-		read_line("Network name: ", true, true, name, 128);
+		read_line("Network name: ", true, true, name, MAX_NETWORK_NAME_LENGTH);
 		printf("Ammount of hosts: ");
 		scanf_s("%u", &host_count);
 		
