@@ -11,11 +11,12 @@
 // math
 #include <math.h>
 
-// utils
-#include "array.h"
-#include "utils.h"
-
 // network
 #include "ip.h"
 #include "mask.h"
 #include "network.h"
+
+// utils
+#include "array.h"
+#include "utils.h"
+

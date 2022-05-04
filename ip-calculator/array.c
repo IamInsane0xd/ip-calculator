@@ -1,6 +1,4 @@
-#include <stdlib.h>
-
-#include "array.h"
+#include "includes.h"
 
 void init_array(array_t *array)
 {
@@ -25,7 +23,22 @@ void array_append(array_t *array, void *element)
 	array->items[array->length++] = element;
 }
 
-void array_swap(array_t *array, void *element, int index)
+void init_narray(narray_t *array)
 {
-	array->items[index] = element;
+	array->length = 0;
+}
+
+void narray_append(narray_t *array, network_t *network)
+{
+	if (array->length == 0)
+	{
+		array->items = malloc(sizeof(network));
+		array->items[array->length++] = network;
+		return;
+	}
+
+	int size = sizeof(network) * array->length;
+
+	array->items = realloc(array->items, size + sizeof(network));
+	array->items[array->length++] = network;
 }

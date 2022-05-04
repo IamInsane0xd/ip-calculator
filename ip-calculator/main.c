@@ -2,27 +2,26 @@
 
 int main()
 {
-	unsigned int networks;
-	array_t names;
-	array_t host_counts;
+	unsigned int network_count;
+	narray_t networks;
+
+	init_narray(&networks);
 	
 	printf("Ammount of networks: ");
-	scanf_s("%u", &networks);
+	scanf_s("%u", &network_count);
 	
-	init_array(&names);
-	init_array(&host_counts);
-	
-	for (int i = 0; i < networks; i++)
+	for (int i = 0; i < network_count; i++)
 	{
 		char *name = malloc(128);
 		unsigned int host_count;
+		network_t network;
 		
 		read_line("Network name: ", true, name, 128);
 		printf("Ammount of hosts: ");
 		scanf_s("%u", &host_count);
-
-		array_append(&names, name);
-		array_append(&host_counts, host_count);
+		
+		create_network(&network, name, host_count);
+		narray_append(&networks, &network);
 	}
 
 	return 0;
