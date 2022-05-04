@@ -50,16 +50,16 @@ unsigned __int64 binary_to_int(const char *s)
 }
 
 // read line from stdin
-void read_line(const char *prompt, const bool prompt_size_prefix, char *str, const size_t size)
+void read_line(const char *prompt, const bool prompt_size_prefix, const bool start_with_newline, char *out, const size_t size)
 {
 	int ch, i = 0;
 	bool has_typed = false;
 
 	if (prompt_size_prefix)
-		printf("(%llu) %s", size, prompt);
+		printf(start_with_newline ? "\n(%llu) %s" : "(%llu) %s", size, prompt);
 	
 	else
-		printf("%s", prompt);
+		printf(start_with_newline ? "\n%s" : "%s", prompt);
 
 	while (!has_typed)
 	{
@@ -70,15 +70,15 @@ void read_line(const char *prompt, const bool prompt_size_prefix, char *str, con
 			has_typed = true;
 			
 			if (i < size)
-				str[i++] = ch;
+				out[i++] = ch;
 		}
 	}
 	
 	while ((ch = getchar()) != '\n' && ch != EOF)
 	{
 		if (i < size)
-			str[i++] = ch;
+			out[i++] = ch;
 	} 
 
-	str[i] = '\0';
+	out[i] = '\0';
 }

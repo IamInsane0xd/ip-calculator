@@ -1,6 +1,6 @@
 #include "includes.h"
 
-void create_mask(mask_t *mask, int octet_1, int octet_2, int octet_3, int octet_4)
+void create_mask(mask_t *mask, unsigned int octet_1, unsigned int octet_2, unsigned int octet_3, unsigned int octet_4)
 {
 	mask->int_octet_1 = octet_1;
 	mask->int_octet_2 = octet_2;
@@ -12,10 +12,17 @@ void create_mask(mask_t *mask, int octet_1, int octet_2, int octet_3, int octet_
 	mask->bin_octet_4 = I(octet_4);
 }
 
+void parse_mask_string(mask_t *mask, char *mask_string)
+{
+	unsigned int octet_1, octet_2, octet_3, octet_4;
+	sscanf_s(mask_string, "%u.%u.%u.%u", &octet_1, &octet_2, &octet_3, &octet_4);
+	create_mask(mask, octet_1, octet_2, octet_3, octet_4);
+}
+
 char *int_mask_to_string(mask_t mask)
 {
 	char *str = malloc(sizeof(char) * 16);
-	sprintf_s(str, sizeof(char) * 16, "%i.%i.%i.%i", mask.int_octet_1, mask.int_octet_2, mask.int_octet_3, mask.int_octet_4);
+	sprintf_s(str, sizeof(char) * 16, "%u.%u.%u.%u", mask.int_octet_1, mask.int_octet_2, mask.int_octet_3, mask.int_octet_4);
 	return str;
 }
 
