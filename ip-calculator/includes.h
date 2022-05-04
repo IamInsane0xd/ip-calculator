@@ -11,9 +11,11 @@
 
 // consts
 #define MAX_NETWORK_NAME_LENGTH 128
+#define MAX_NETWORK_NAME_LENGTH 12
 #define IP_STRING_LENGTH 16
 #define INT_MASK_STRING_LENGTH 16
 #define BIN_MASK_STRING_LENGTH 36
+#define MAX_HOST_COUNT 126
 
 // math
 #include <math.h>
