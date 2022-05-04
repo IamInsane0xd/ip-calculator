@@ -2,11 +2,11 @@
 
 int main()
 {
-	unsigned int network_count;
-	network_t base_network;
+	unsigned int network_count, i;
 	char *base_name = malloc(MAX_NETWORK_NAME_LENGTH),
 			 *base_ip_string = malloc(IP_STRING_LENGTH),
 			 *base_mask_string = malloc(INT_MASK_STRING_LENGTH);
+	network_t base_network;
 	ip_t base_ip;
 	mask_t base_mask;
 	narray_t networks;
@@ -25,9 +25,9 @@ int main()
 	
 	create_base_network(&base_network, base_name, network_count, base_ip, base_mask);
 	
-	for (unsigned int i = 0; i < network_count; i++)
+	for (i = 0; i < network_count; i++)
 	{
-		char *name = malloc(128);
+		char *name = malloc(MAX_NETWORK_NAME_LENGTH);
 		unsigned int host_count;
 		network_t network;
 		
