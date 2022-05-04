@@ -6,7 +6,7 @@ void create_network(network_t *network, char *name, int hosts)
 	network->hosts = hosts;
 }
 
-void create_base_network(network_t *base_network, char *name, int hosts, mask_t ip, mask_t mask)
+void create_base_network(network_t *base_network, char *name, int hosts, ip_t ip, mask_t mask)
 {
 	base_network->name = name;
 	base_network->hosts = hosts;
@@ -14,7 +14,7 @@ void create_base_network(network_t *base_network, char *name, int hosts, mask_t 
 	base_network->mask = mask;
 }
 
-void network_add_ips(network_t *network, mask_t network_ip, mask_t first_assignable, mask_t broadcast)
+void network_add_ips(network_t *network, ip_t network_ip, ip_t first_assignable, ip_t broadcast)
 {
 	network->network = network_ip;
 	network->first_assignable = first_assignable;
@@ -26,7 +26,7 @@ void network_add_mask(network_t *network, mask_t mask)
 	network->mask = mask;
 }
 
-void network_add_ips_and_mask(network_t *network, mask_t network_ip, mask_t first_assignable, mask_t broadcast, mask_t mask)
+void network_add_ips_and_mask(network_t *network, ip_t network_ip, ip_t first_assignable, ip_t broadcast, mask_t mask)
 {
 	network_add_ips(network, network_ip, first_assignable, broadcast);
 	network_add_mask(network, mask);
