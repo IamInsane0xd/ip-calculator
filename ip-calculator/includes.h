@@ -16,6 +16,8 @@
 #define BIN_MASK_STRING_LENGTH 36
 #define MAX_HOST_COUNT 126
 #define INT_OCTET_LENGTH 3
+#define BIN_OCTET_LENGTH 8
+
 // macros
 #define I(x) int_to_binary(x)
 #define B(x) binary_to_int(#x)

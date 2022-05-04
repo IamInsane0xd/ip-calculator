@@ -15,10 +15,12 @@ typedef struct
 
 void create_mask(mask_t *mask, unsigned int octet_1, unsigned int octet_2, unsigned int octet_3, unsigned int octet_4);
 
-void parse_mask_string(mask_t *mask, char *mask_string);
+void parse_mask_string(char *mask_string, mask_t *out);
 
-// int mask to string converter
-char *int_mask_to_string(mask_t mask);
+void int_mask_to_string(mask_t mask, char *out);
 
-// binary mask to string converter
-char *bin_mask_to_string(mask_t mask);
+void bin_mask_to_string(mask_t mask, char *out);
+
+void mask_get_int_octet(mask_t mask, int index, char *out);
+
+void mask_get_bin_octet(mask_t mask, int index, char *out);
