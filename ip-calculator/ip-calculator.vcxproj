@@ -144,6 +144,7 @@
     <ClCompile Include="main.c" />
     <ClCompile Include="mask.c" />
     <ClCompile Include="network.c" />
+    <ClCompile Include="table.c" />
     <ClCompile Include="utils.c" />
   </ItemGroup>
   <ItemGroup>
@@ -152,6 +153,7 @@
     <ClInclude Include="ip.h" />
     <ClInclude Include="mask.h" />
     <ClInclude Include="network.h" />
+    <ClInclude Include="table.h" />
     <ClInclude Include="utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -46,5 +46,5 @@ void network_get_slash_mask(network_t network, char *out)
 			count++;
 	}
 	
-	out = itoa(24 + count, out, 10);
+	out = _itoa_s(24 + count, out, BIN_OCTET_LENGTH, 10);
 }

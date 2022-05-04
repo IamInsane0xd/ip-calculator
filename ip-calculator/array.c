@@ -5,6 +5,22 @@ void init_array(array_t *array)
 	array->length = 0;
 }
 
+void init_array_multiple(int array_count, ...)
+{
+	va_list args;
+	int i;
+
+	va_start(args, array_count);
+	
+	for (i = 0; i < array_count; i++)
+	{
+		array_t *array = va_arg(args, array_t *);
+		init_array(array);
+	}
+	
+	va_end(args);
+}
+
 void array_append(array_t *array, void *element)
 {
 	if (array->length == 0)

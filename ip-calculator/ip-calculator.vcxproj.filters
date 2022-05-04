@@ -45,6 +45,9 @@
     <ClCompile Include="utils.c">
       <Filter>Source Files\utils</Filter>
     </ClCompile>
+    <ClCompile Include="table.c">
+      <Filter>Source Files\utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h">
@@ -63,6 +66,9 @@
       <Filter>Header Files\utils</Filter>
     </ClInclude>
     <ClInclude Include="utils.h">
+      <Filter>Header Files\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="table.h">
       <Filter>Header Files\utils</Filter>
     </ClInclude>
   </ItemGroup>

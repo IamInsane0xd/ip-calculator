@@ -21,6 +21,9 @@
 // macros
 #define I(x) int_to_binary(x)
 #define B(x) binary_to_int(#x)
+#define TABLE_ROW_SEPARATOR "+--------------+------------+---------+---------------+-----------+-------+-------+\n"
+#define TABLE_ROW(x1, x2, x3, x4, x5, x6, x7) "| %-12s | %-10s | %-7s | %-13s | %-9s | %-5s | %-5s |\n", x1, x2, x3, x4, x5, x6, x7
+#define TABLE_HEADER_ROW TABLE_ROW("network name", "addr count", "network", "first assign.", "broadcast", ".mask", "/mask")
 
 // math
 #include <math.h>
@@ -33,3 +36,4 @@
 // utils
 #include "array.h"
 #include "utils.h"
+#include "table.h"
