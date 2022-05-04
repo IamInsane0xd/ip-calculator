@@ -10,7 +10,6 @@
 #include <string.h>
 
 // consts
-#define MAX_NETWORK_NAME_LENGTH 128
 #define MAX_NETWORK_NAME_LENGTH 12
 #define IP_STRING_LENGTH 16
 #define INT_MASK_STRING_LENGTH 16
