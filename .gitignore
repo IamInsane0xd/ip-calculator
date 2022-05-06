@@ -1,5 +1,5 @@
-# .gitignore from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
-#             and https://github.com/github/gitignore/blob/main/C.gitignore
+# .gitignore from https://github.com/github/gitignore/blob/main/C.gitignore
+#             and https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
 # Prerequisites
 *.d
