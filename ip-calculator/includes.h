@@ -19,12 +19,12 @@
 #define MAX_NETWORK_COUNT 64
 #define INT_OCTET_LENGTH 3
 #define BIN_OCTET_LENGTH 8
+#define TABLE_ROW_SEPARATOR "+--------------+-------------+---------+---------------+-----------+-------+-------+\n"
+#define TABLE_HEADER_ROW "| network name | addr. count | network | first assign. | broadcast | .mask | /mask |\n"
 
 // macros
 #define I(x) int_to_binary(x)
 #define B(x) binary_to_int(#x)
-#define TABLE_ROW_SEPARATOR "+--------------+-------------+---------+---------------+-----------+-------+-------+\n"
-#define TABLE_HEADER_ROW "| network name | addr. count | network | first assign. | broadcast | .mask | /mask |\n"
 #define TABLE_ROW(x1, x2, x3, x4, x5, x6, x7) "| %-12s | %-11s | .%-6s | .%-12s | .%-8s | .%-4s | /%-4s |\n", x1, x2, x3, x4, x5, x6, x7
 
 // math
