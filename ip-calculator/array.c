@@ -51,23 +51,3 @@ void array_append_multiple(array_t *array, int element_count, ...)
 	
 	va_end(args);
 }
-
-void init_narray(narray_t *array)
-{
-	array->length = 0;
-}
-
-void narray_append(narray_t *array, network_t *network)
-{
-	if (array->length == 0)
-	{
-		array->items = malloc(sizeof(network));
-		array->items[array->length++] = network;
-		return;
-	}
-
-	int size = sizeof(network) * array->length;
-
-	array->items = realloc(array->items, size + sizeof(network));
-	array->items[array->length++] = network;
-}

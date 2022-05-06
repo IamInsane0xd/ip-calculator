@@ -1,6 +1,6 @@
 #include "includes.h"
 
-void create_ip(ip_t *ip, unsigned int octet_1, unsigned int octet_2, unsigned int octet_3, unsigned int octet_4)
+void create_ip(ip_t *ip, int octet_1, int octet_2, int octet_3, int octet_4)
 {
 	ip->octet_1 = octet_1;
 	ip->octet_2 = octet_2;
@@ -23,31 +23,31 @@ void ip_to_string(ip_t ip, char *out)
 	out = ip_string;
 }
 
-void ip_get_octet(ip_t ip, int index, char *out)
+char *ip_get_octet(ip_t ip, int index)
 {
-	char *octet_string = malloc(sizeof(char) * INT_OCTET_LENGTH);
+	char *octet_string = malloc(sizeof(char) * (INT_OCTET_LENGTH + 1));
 
 	switch (index)
 	{
-	case 1:
-		sprintf_s(octet_string, sizeof(char) * INT_OCTET_LENGTH, "%u", ip.octet_1);
+	case 0:
+		sprintf_s(octet_string, sizeof(char) * (INT_OCTET_LENGTH + 1), "%i", ip.octet_1);
 		break;
 		
+	case 1:
+		sprintf_s(octet_string, sizeof(char) * (INT_OCTET_LENGTH + 1), "%i", ip.octet_2);
+		break;
+
 	case 2:
-		sprintf_s(octet_string, sizeof(char) * INT_OCTET_LENGTH, "%u", ip.octet_2);
+		sprintf_s(octet_string, sizeof(char) * (INT_OCTET_LENGTH + 1), "%i", ip.octet_3);
 		break;
 
 	case 3:
-		sprintf_s(octet_string, sizeof(char) * INT_OCTET_LENGTH, "%u", ip.octet_3);
-		break;
-
-	case 4:
-		sprintf_s(octet_string, sizeof(char) * INT_OCTET_LENGTH, "%u", ip.octet_4);
+		sprintf_s(octet_string, sizeof(char) * (INT_OCTET_LENGTH + 1), "%i", ip.octet_4);
 		break;
 
 	default:
 		octet_string = "###";
 	}
 
-	out = octet_string;
+	return octet_string;
 }

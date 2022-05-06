@@ -22,3 +22,7 @@ void network_add_mask(network_t *network, mask_t mask);
 void network_add_ips_and_mask(network_t *network, ip_t network_ip, ip_t first_assignable, ip_t broadcast, mask_t mask);
 
 void network_get_slash_mask(network_t network, char *out);
+
+void calculate_networks(network_t *network[MAX_NETWORK_COUNT], int network_count, network_t *base_network);
+
+void print_networks_in_table(network_t *networks[MAX_NETWORK_COUNT], int network_count);
