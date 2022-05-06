@@ -47,8 +47,10 @@ int main()
 	calculate_networks(networks, network_count, &base_network);
 	print_networks_in_table(networks, network_count);
 
-	// this is here so when you open the exe (not in cli) it doesn't close before you can see the results
-	getchar();
+	printf("\n");
+
+	// this is here so when you open the exe (not in cli) it doesn't close before you can see the result
+	system("pause");
 
 	return 0;
 }
