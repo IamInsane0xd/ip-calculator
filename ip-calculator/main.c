@@ -5,8 +5,8 @@ int main()
 	int network_count, i;
 	int *hosts_total = 0;
 	char *base_name = malloc(MAX_NETWORK_NAME_LENGTH),
-			 *base_ip_string = malloc(IP_STRING_LENGTH),
-			 *base_mask_string = malloc(INT_MASK_STRING_LENGTH);
+		*base_ip_string = malloc(IP_STRING_LENGTH),
+		*base_mask_string = malloc(INT_MASK_STRING_LENGTH);
 	network_t base_network;
 	ip_t base_ip;
 	mask_t base_mask;
