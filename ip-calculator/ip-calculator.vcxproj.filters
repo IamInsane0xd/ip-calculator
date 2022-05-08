@@ -54,9 +54,6 @@
     <ClCompile Include="table.c">
       <Filter>Source Files\utils</Filter>
     </ClCompile>
-    <ClCompile Include="main_.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="menu.c">
       <Filter>Source Files\menu</Filter>
     </ClCompile>
@@ -85,9 +82,6 @@
     </ClInclude>
     <ClInclude Include="table.h">
       <Filter>Header Files\utils</Filter>
-    </ClInclude>
-    <ClInclude Include="includes_.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="menu.h">
       <Filter>Header Files\menu</Filter>
