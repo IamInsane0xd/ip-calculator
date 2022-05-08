@@ -25,6 +25,12 @@
     <Filter Include="Source Files\utils">
       <UniqueIdentifier>{ce3730b2-0cf4-4966-a298-b2def0191ed8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\menu">
+      <UniqueIdentifier>{1aa4609a-963b-47d9-a11f-6fbe7f5043e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\menu">
+      <UniqueIdentifier>{c5b09ab4-1469-46ac-95e9-3f3d3b1ff587}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
@@ -48,6 +54,15 @@
     <ClCompile Include="table.c">
       <Filter>Source Files\utils</Filter>
     </ClCompile>
+    <ClCompile Include="main_.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="menu.c">
+      <Filter>Source Files\menu</Filter>
+    </ClCompile>
+    <ClCompile Include="options.c">
+      <Filter>Source Files\menu</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes.h">
@@ -70,6 +85,18 @@
     </ClInclude>
     <ClInclude Include="table.h">
       <Filter>Header Files\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="includes_.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="menu.h">
+      <Filter>Header Files\menu</Filter>
+    </ClInclude>
+    <ClInclude Include="options.h">
+      <Filter>Header Files\menu</Filter>
+    </ClInclude>
+    <ClInclude Include="main.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

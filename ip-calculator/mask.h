@@ -17,9 +17,9 @@ void create_mask(mask_t *mask, int octet_1, int octet_2, int octet_3, int octet_
 
 void parse_mask_string(char *mask_string, mask_t *out);
 
-void int_mask_to_string(mask_t mask, char *out);
+char *int_mask_to_string(mask_t mask);
 
-void bin_mask_to_string(mask_t mask, char *out);
+char *bin_mask_to_string(mask_t mask);
 
 char *mask_get_int_octet(mask_t mask, int index);
 

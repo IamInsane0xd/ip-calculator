@@ -9,18 +9,17 @@ void create_ip(ip_t *ip, int octet_1, int octet_2, int octet_3, int octet_4)
 }
 
 void parse_ip_string(char *ip_string, ip_t *out)
-
 {
 	unsigned int octet_1, octet_2, octet_3, octet_4;
 	sscanf_s(ip_string, "%u.%u.%u.%u", &octet_1, &octet_2, &octet_3, &octet_4);
 	create_ip(out, octet_1, octet_2, octet_3, octet_4);
 }
 
-void ip_to_string(ip_t ip, char *out)
+char *ip_to_string(ip_t ip)
 {
 	char *ip_string = malloc(sizeof(char) * IP_STRING_LENGTH);
 	sprintf_s(ip_string, sizeof(char) * IP_STRING_LENGTH, "%i.%i.%i.%i", ip.octet_1, ip.octet_2, ip.octet_3, ip.octet_4);
-	out = ip_string;
+	return ip_string;
 }
 
 char *ip_get_octet(ip_t ip, int index)

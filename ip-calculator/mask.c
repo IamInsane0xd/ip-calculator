@@ -19,18 +19,18 @@ void parse_mask_string(char *mask_string, mask_t *out)
 	create_mask(out, octet_1, octet_2, octet_3, octet_4);
 }
 
-void int_mask_to_string(mask_t mask, char *out)
+char *int_mask_to_string(mask_t mask)
 {
 	char *str = malloc(sizeof(char) * INT_MASK_STRING_LENGTH);
 	sprintf_s(str, sizeof(char) * INT_MASK_STRING_LENGTH, "%i.%i.%i.%i", mask.int_octet_1, mask.int_octet_2, mask.int_octet_3, mask.int_octet_4);
-	out = str;
+	return str;
 }
 
-void bin_mask_to_string(mask_t mask, char *out)
+char *bin_mask_to_string(mask_t mask)
 {
 	char *str = malloc(sizeof(char) * BIN_MASK_STRING_LENGTH);
 	sprintf_s(str, sizeof(char) * BIN_MASK_STRING_LENGTH, "%s.%s.%s.%s", mask.bin_octet_1, mask.bin_octet_2, mask.bin_octet_3, mask.bin_octet_4);
-	out = str;
+	return str;
 }
 
 char *mask_get_int_octet(mask_t mask, int index)

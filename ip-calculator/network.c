@@ -156,34 +156,118 @@ void print_networks_in_table(network_t *networks[MAX_NETWORK_COUNT], int network
 {
 	int i;
 	char *array[MAX_NETWORK_COUNT * 7];
+	print_type_t print_type;
+
+	if (!OPTIONS.options[0] && !OPTIONS.options[1])
+		print_type = NORMAL;
+
+	else if (OPTIONS.options[0] && !OPTIONS.options[1])
+		print_type = IP;
+	
+	else if (!OPTIONS.options[0] && OPTIONS.options[1])
+		print_type = MASK;
+	
+	else
+		print_type = BOTH;
 
 	for (i = 0; i < network_count * 7; i += 7)
 	{
-		char *network_name = malloc(sizeof(char) * (MAX_NETWORK_NAME_LENGTH + 1)),
+		char *network_name = malloc(sizeof(char) * MAX_NETWORK_NAME_LENGTH),
 			*addr_count = malloc(sizeof(char) * 4),
-			*network = malloc(sizeof(char) * (INT_OCTET_LENGTH + 1)),
-			*first_assign = malloc(sizeof(char) * (INT_OCTET_LENGTH + 1)),
-			*broadcast = malloc(sizeof(char) * (INT_OCTET_LENGTH + 1)),
-			*dot_mask = malloc(sizeof(char) * (INT_OCTET_LENGTH + 1)),
+			*network = malloc(sizeof(char) * IP_STRING_LENGTH),
+			*first_assign = malloc(sizeof(char) * IP_STRING_LENGTH),
+			*broadcast = malloc(sizeof(char) * IP_STRING_LENGTH),
+			*dot_mask = malloc(sizeof(char) * INT_MASK_STRING_LENGTH),
 			*slash_mask = malloc(sizeof(char) * 4);
 
-		network_name = networks[i / 7]->name;
-		_itoa_s(networks[i / 7]->hosts, addr_count, sizeof(addr_count), 10);
-		network = ip_get_octet(networks[i / 7]->network, 3);
-		first_assign = ip_get_octet(networks[i / 7]->first_assignable, 3);
-		broadcast = ip_get_octet(networks[i / 7]->broadcast, 3);
-		dot_mask = mask_get_int_octet(networks[i / 7]->mask, 3);
-		network_get_slash_mask(*networks[i / 7], slash_mask);
+		switch (print_type)
+		{
+		case NORMAL:
+		{
+			network_name = networks[i / 7]->name;
+			_itoa_s(networks[i / 7]->hosts, addr_count, sizeof(addr_count), 10);
+			network = ip_get_octet(networks[i / 7]->network, 3);
+			first_assign = ip_get_octet(networks[i / 7]->first_assignable, 3);
+			broadcast = ip_get_octet(networks[i / 7]->broadcast, 3);
+			dot_mask = mask_get_int_octet(networks[i / 7]->mask, 3);
+			network_get_slash_mask(*networks[i / 7], slash_mask);
 
-		array[i] = network_name;
-		array[i + 1] = addr_count;
-		array[i + 2] = network;
-		array[i + 3] = first_assign;
-		array[i + 4] = broadcast;
-		array[i + 5] = dot_mask;
-		array[i + 6] = slash_mask;
+			array[i] = network_name;
+			array[i + 1] = addr_count;
+			array[i + 2] = network;
+			array[i + 3] = first_assign;
+			array[i + 4] = broadcast;
+			array[i + 5] = dot_mask;
+			array[i + 6] = slash_mask;
+
+			break;
+		}
+
+		case IP:
+		{
+			network_name = networks[i / 7]->name;
+			_itoa_s(networks[i / 7]->hosts, addr_count, sizeof(addr_count), 10);
+			network = ip_to_string(networks[i / 7]->network);
+			first_assign = ip_to_string(networks[i / 7]->first_assignable);
+			broadcast = ip_to_string(networks[i / 7]->broadcast);
+			dot_mask = mask_get_int_octet(networks[i / 7]->mask, 3);
+			network_get_slash_mask(*networks[i / 7], slash_mask);
+
+			array[i] = network_name;
+			array[i + 1] = addr_count;
+			array[i + 2] = network;
+			array[i + 3] = first_assign;
+			array[i + 4] = broadcast;
+			array[i + 5] = dot_mask;
+			array[i + 6] = slash_mask;
+
+			break;
+		}
+		
+		case MASK:
+		{
+			network_name = networks[i / 7]->name;
+			_itoa_s(networks[i / 7]->hosts, addr_count, sizeof(addr_count), 10);
+			network = ip_get_octet(networks[i / 7]->network, 3);
+			first_assign = ip_get_octet(networks[i / 7]->first_assignable, 3);
+			broadcast = ip_get_octet(networks[i / 7]->broadcast, 3);
+			dot_mask = int_mask_to_string(networks[i / 7]->mask);
+			network_get_slash_mask(*networks[i / 7], slash_mask);
+
+			array[i] = network_name;
+			array[i + 1] = addr_count;
+			array[i + 2] = network;
+			array[i + 3] = first_assign;
+			array[i + 4] = broadcast;
+			array[i + 5] = dot_mask;
+			array[i + 6] = slash_mask;
+
+			break;
+		}
+
+		case BOTH:
+		{
+			network_name = networks[i / 7]->name;
+			_itoa_s(networks[i / 7]->hosts, addr_count, sizeof(addr_count), 10);
+			network = ip_to_string(networks[i / 7]->network);
+			first_assign = ip_to_string(networks[i / 7]->first_assignable);
+			broadcast = ip_to_string(networks[i / 7]->broadcast);
+			dot_mask = int_mask_to_string(networks[i / 7]->mask);
+			network_get_slash_mask(*networks[i / 7], slash_mask);
+
+			array[i] = network_name;
+			array[i + 1] = addr_count;
+			array[i + 2] = network;
+			array[i + 3] = first_assign;
+			array[i + 4] = broadcast;
+			array[i + 5] = dot_mask;
+			array[i + 6] = slash_mask;
+
+			break;
+		}			
+		}
 	}
 
 	printf("\n\n");
-	print_table(network_count, array);
+	print_table(network_count, array, print_type);
 }
